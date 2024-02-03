@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_number_generator/constant/color.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -42,10 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('123'),
-                      Text('456'),
-                      Text('789'),
-                    ],
+                      123,
+                      456,
+                      789,
+                    ].map((x) => Row(children: x.toString().split('').map((y)=>Image.asset('asset/img/$y.png',height:70,width:60,)).toList(),),).toList(),
                   ),
                 ),
 
