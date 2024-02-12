@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:random_number_generator/constant/color.dart';
 
@@ -10,6 +12,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<int> randomNumbers = [
+    123,456,789,
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      123,
-                      456,
-                      789,
-                    ].map((x) => Row(children: x.toString().split('').map((y)=>Image.asset('asset/img/$y.png',height:70,width:60,)).toList(),),).toList(),
+                    children: randomNumbers.asMap().entries.map((x) => Padding(
+                      padding: EdgeInsets.only(bottom: x.key == 2 ? 0:16),
+                      child: Row(children: x.value.toString().split('').map((y)=>Image.asset('asset/img/$y.png',height:70,width:60,)).toList(),),
+                    ),).toList(),
                   ),
                 ),
 
@@ -61,7 +67,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: ElevatedButton.styleFrom(
                           primary: RED_COLOR,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+
+                          final List<int> three_random = [];
+
+                          for (int i=0; i<3; i++)
+                            {final smallnumber = Random().nextInt(1000);
+                              print(smallnumber);
+                            three_random.add(smallnumber);}
+
+                          setState(() {
+                            randomNumbers = three_random;
+                          });
+
+                          print(randomNumbers);
+
+                        },
                         child: Text('생성하기'),
                       ),
                     ),
