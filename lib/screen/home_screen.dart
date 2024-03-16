@@ -69,15 +69,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         onPressed: () {
 
-                          final List<int> three_random = [];
+                          final List<int> three_random = []; // List 대신 Set로 바꾸면 중복 숫자 제거 가능
 
                           for (int i=0; i<3; i++)
                             {final smallnumber = Random().nextInt(1000);
                               print(smallnumber);
-                            three_random.add(smallnumber);}
+                            three_random.add(smallnumber);} // Set 변경시 for loop을 while loop으로 변경
 
                           setState(() {
-                            randomNumbers = three_random;
+                            randomNumbers = three_random; // Set로 변경시 뒤에 .toList() 추가
                           });
 
                           print(randomNumbers);
