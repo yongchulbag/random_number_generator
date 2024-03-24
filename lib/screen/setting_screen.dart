@@ -9,23 +9,51 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  double maxNumber=10000;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: PRIMARY_COLOR,
-      body: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: 10000
-                  .toString()
-                  .split('')
-                  .map((e) =>
-                      Image.asset('asset/img/$e.png', width: 30, height: 30))
-                  .toList(),
-            ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16,
           ),
-        ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Row(
+                  children: maxNumber.toInt()
+                      .toString()
+                      .split('')
+                      .map((e) =>
+                          Image.asset('asset/img/$e.png', width: 30, height: 30))
+                      .toList(),
+                ),
+              ),
+              Slider(
+                value: maxNumber,
+                min: 10000,
+                max: 1000000,
+                onChanged: (double val){
+                  print(val);
+                  setState(() {
+                    maxNumber=val;
+                  });
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: RED_COLOR,
+                ),
+                child: Text('저장'),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
