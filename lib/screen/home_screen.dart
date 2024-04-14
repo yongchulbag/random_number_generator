@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int maxNumber = 1000;
   List<int> randomNumbers = [
     123,456,789,
   ];
@@ -40,14 +41,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     IconButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
+                        onPressed: () async {
+                          final int? result = await
+                          Navigator.of(context).push<int>( // int로 result 값을 지정해 줄수도 있다
                             MaterialPageRoute(
                               builder: (BuildContext context){
-                                return SettingsScreen();
+                                return SettingsScreen( );
                               }
                             )
                           ); // 복잡하지만 이렇게 푸시하는 방법도 알아두세요라고 함
+                          print(result);
+
+                          if(result!=null)
+                            {
+                              setState(() {
+                                maxNumber = result;
+                              });
+                            }
                         },
                         icon: Icon(
                           Icons.settings,
@@ -81,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           final List<int> three_random = []; // List 대신 Set로 바꾸면 중복 숫자 제거 가능
 
                           for (int i=0; i<3; i++)
-                            {final smallnumber = Random().nextInt(1000);
+                            {final smallnumber = Random().nextInt(maxNumber);
                               print(smallnumber);
                             three_random.add(smallnumber);} // Set 변경시 for loop을 while loop으로 변경
 
