@@ -11,7 +11,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  double maxNumber;
+  double maxNumber=1000; //초기값 지정안해주면 오류 작살남 왜인지는 모르겠음
 
   @override
   void initState() {
