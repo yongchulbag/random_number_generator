@@ -15,7 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
-    maxNumber=widget.maxNumber.toDouble();
+    maxNumber=widget.maxNumber.toDouble(); // stateful 의 경우 initstate에서만 widget 불러오기 가능
     // TODO: implement initState
     super.initState();
   }
