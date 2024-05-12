@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.of(context).push<int>( // int로 result 값을 지정해 줄수도 있다
                             MaterialPageRoute(
                               builder: (BuildContext context){
-                                return SettingsScreen( );
+                                return SettingsScreen(maxNumber: maxNumber,);
                               }
                             )
                           ); // 복잡하지만 이렇게 푸시하는 방법도 알아두세요라고 함
